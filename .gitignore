@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Run folders and company data never belong here.
+loop-runs/
