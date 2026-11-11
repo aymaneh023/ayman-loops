@@ -22,11 +22,11 @@ Count items by type and by distinct speaker: five quotes from one person are one
 
 ## ICE
 
-Impact × Confidence × Ease, each 1–10, used to rank options. Impact: how much the option moves the goal in the context pack if it works. Confidence: the level above, rounded up to at least 1. Ease: the user's estimate at checkpoint 1. Until the user sets Ease, rank by Impact × Confidence and say so.
+Impact × Confidence × Ease, each 1–10, used to rank options. Impact: how much the option moves the goal in the context pack if it works. Confidence: the level above, rounded up to at least 1. Ease: the loop's guess, confirmed or changed by the user at checkpoint 1. Until the user confirms Ease, rank by Impact × Confidence and say so.
 
 ## MoSCoW
 
-Must, Should, Could, Won't (this time). The user sets it at checkpoint 1. When most items end up Must, point that out: the usual failure of MoSCoW is too many Musts.
+Must, Should, Could, Won't (this time). The loop proposes it; the user confirms or changes it at checkpoint 1. When most items end up Must, point that out: the usual failure of MoSCoW is too many Musts.
 
 ## The four risks (Marty Cagan, SVPG)
 

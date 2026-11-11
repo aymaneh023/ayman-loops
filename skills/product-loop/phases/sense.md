@@ -53,7 +53,7 @@ For each option, using [../references/frameworks.md](../references/frameworks.md
 - **Confidence** 0–10, from the type and number of supporting items, with a one-line reason.
 - **Impact** 1–10 on the goal in the context pack, with a one-line reason.
 - **Cheapest test** of the riskiest assumption.
-- **Ease**: left empty for the user.
+- **Ease** 1–10 and **MoSCoW**: the loop's guess, each with a one-line reason. The user confirms or changes them at checkpoint 1.
 
 Turn the results into **proposals** in `<run>/proposals.md`, in the format of [../references/review-doc.md](../references/review-doc.md). A proposal is one decision the user can make: take option X for opportunity Y, run test Z first, move or drop a roadmap item, update the journey or tree.
 

@@ -45,9 +45,9 @@ Use the Claude Docs connector for every doc, and follow its own instructions for
 Read each phase file at the start of that phase, not earlier.
 
 1. **Sense**: [phases/sense.md](phases/sense.md). Capture, Understand, Map, Explore, Assess. Ends with the review doc published.
-2. **Checkpoint 1: decide.** See *Checkpoints*. For each proposal the user accepts, rejects, changes or parks it, sets **Ease** (1–10) and **MoSCoW**, and marks a big new idea as a **bet**.
-3. **Shape**: [phases/shape.md](phases/shape.md). Specify, Plan. Ends with the change set and the Linear preview in the review doc.
-4. **Checkpoint 2: approve.** The user approves the change set, or changes it.
+2. **Checkpoint 1: decide.** See *Checkpoints*. For each proposal the user accepts, rejects, changes or parks it, and marks a big new idea as a **bet**. The loop proposes **Ease** (1–10) and **MoSCoW** for each, with a one-line reason; the user confirms or changes them.
+3. **Shape**: [phases/shape.md](phases/shape.md). Refine, Specify, Plan. Starts with short rounds of questions about the picture. Ends with the change set and the Linear preview in the review doc.
+4. **Checkpoint 2: approve.** The user approves the change set one part at a time, or changes it.
 5. **Apply**: the last section of [phases/shape.md](phases/shape.md).
 6. **Retro**: [phases/retro.md](phases/retro.md).
 
@@ -59,7 +59,14 @@ Set `phase` to `done` and end with a short report: what changed where (with link
 2. Send a push notification: `<Product> run <run-id>: checkpoint <n> ready, <k> proposals, <f> flags.`
 3. Wait. Decisions arrive as comments in the review doc or as chat messages, from the user or a co-founder. Answer a question in its comment thread.
 4. Record each decision in `decisions.json` (`{"P3": {"decision": "accept", "ease": 6, "moscow": "Should", "bet": false, "note": "…"}}`) and in the review doc next to its proposal.
-5. The checkpoint is passed when **every** proposal (checkpoint 1) or the whole change set (checkpoint 2) has a decision. An open item: ask about that item by its ID.
+5. The checkpoint is passed when **every** proposal (checkpoint 1) or the whole change set (checkpoint 2) has a decision. An open item: ask about that item by its title.
+
+How to talk to the user at a checkpoint:
+
+- **One part at a time.** Show a short part in chat, wait for the answer, then show the next. At checkpoint 2 the parts are: the PRD, the roadmap, the issue tracker, then what is left to choose (push, decisions log). The full detail goes into the review doc.
+- **Plain words.** No names of frameworks, steps or checks from this skill unless the user asks. Say what changes, before and after.
+- **Titles, not codes.** Name a proposal, action or item by a short title. Codes (`P3`, `A2`, `I14`) stay in the run folder's files and in the detail of the review doc. When the product already uses a code for something else, such as `P1` for a project, never show that code to the user for a proposal.
+- **Standard names.** Where the loop has to name something new, use the conventional name a product or engineering team would use.
 
 ## Checks
 
@@ -70,5 +77,6 @@ Every step ends with its check, as [references/checks.md](references/checks.md) 
 - Every quote is copied word for word from its source. Where the input bank holds no evidence for a claim, the proposal says "no evidence yet".
 - The user's own ideas and technical research are input items with their own type ([references/input-types.md](references/input-types.md)). An idea is a hypothesis until evidence supports it.
 - People appear as role + code ("Teacher, P03"). Names stay in the run folder's `people.json`.
-- Ease and MoSCoW come from the user. The loop proposes Impact and Confidence, each with a one-line reason.
+- The loop proposes Impact, Confidence, Ease and MoSCoW, each with a one-line reason. Ease and MoSCoW count only after the user confirms or changes them.
+- A large change set is fine. Do not shrink it to keep it small. Tell the user what it holds, and apply nothing without permission.
 - Frameworks, scales and templates: [references/frameworks.md](references/frameworks.md).

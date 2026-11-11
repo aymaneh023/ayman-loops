@@ -1,6 +1,16 @@
 # Phase 2: Shape
 
-Two steps, Specify and Plan, for the proposals the user **accepted** or **changed** at checkpoint 1 (`<run>/decisions.json`). Rejected and parked proposals stay out. Then, after checkpoint 2, Apply. `<run>` is the run folder, `<skill>` this skill's folder.
+Three steps, Refine, Specify and Plan, for the proposals the user **accepted** or **changed** at checkpoint 1 (`<run>/decisions.json`). Rejected and parked proposals stay out. Then, after checkpoint 2, Apply. `<run>` is the run folder, `<skill>` this skill's folder.
+
+## 5b. Refine
+
+Before writing any change, check the picture with the user. A decision on a proposal says yes or no; it does not say what the thing looks like.
+
+1. Ask short rounds of two or three questions, one topic per round: what each user gets, what the content is, what the other roles see, what is in the first version and what comes later. Ask about anything the loop filled in itself. Give a recommendation when the user asks which option is better.
+2. Save the answers word for word as a source in `<run>/sources/` and add them as input items.
+3. Write the picture back in plain words, as short lists per user, and say which points the loop filled in itself. Go on only when the user confirms it.
+
+**Done when:** the user confirmed the picture.
 
 ## 6. Specify
 
@@ -23,9 +33,18 @@ A proposal that is a test ("run test Z first") gets no PRD change. It gets a tes
    [{"id": "A1", "kind": "create_issue", "decision": "P3", "title": "…", "body": "…", "project": "…"},
     {"id": "A2", "kind": "move_status", "decision": "P5", "issue": "STE-214", "from": "Backlog", "to": "Todo"}]
    ```
+   The preview covers the whole board, not only new issues:
+   - the text of the initiative, when the goal or the scope changed (`update_project`, with the initiative named in `project`);
+   - the text of each project that changes (`update_project`);
+   - the status of projects: planned for what is needed now, backlog for later (`update_project`);
+   - the status of issues: to do for what is needed now, backlog for later (`move_status`);
+   - new issues (`create_issue`).
+
+   Check who made each project and issue the preview touches. List the ones that belong to someone other than the user and ask about each by name; leave them alone until the user says yes.
+
    Kinds: `create_issue`, `update_project`, `move_status`, `set_priority`, `comment`. Before a `create_issue`, search Linear for an issue that already covers it; found: make it a `comment` or `update` on that issue instead. A new issue gets the label `needs-triage` and its evidence (item IDs and quotes) in the body. Refinement happens later in `define-work`.
 3. Check: `python3 "<skill>/scripts/check.py" actions "<run>"`, then the makes-sense check on the whole change set ([../references/checks.md](../references/checks.md)).
-4. Add the change set to the review doc: PRD before/after, roadmap before/after, the Linear actions as a table, and exactly what Apply will do. Set `phase` to `checkpoint-2`.
+4. Add the change set to the review doc: PRD before/after, roadmap before/after, the Linear actions as a table, and exactly what Apply will do. Also list the other places that describe the plan and that this run does not change (project descriptions, an architecture document, a published overview), so the user knows what goes out of date. Set `phase` to `checkpoint-2`.
 
 **Done when:** the change set is in the review doc and both checks are done.
 
